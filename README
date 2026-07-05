@@ -1,0 +1,124 @@
+<body class="bg-[#F7F2EF]">
+
+<div class="flex h-screen">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="w-20 bg-[#8B5CF6] flex flex-col justify-between items-center py-6">
+
+        <!-- Logo -->
+
+        <div class="flex flex-col items-center gap-8">
+
+            <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
+
+                <i class="fa-solid fa-comment text-purple-600 text-xl"></i>
+
+            </div>
+
+            <i class="fa-solid fa-house text-white text-xl cursor-pointer"></i>
+
+            <i class="fa-solid fa-message text-white text-xl cursor-pointer"></i>
+
+            <i class="fa-solid fa-users text-white text-xl cursor-pointer"></i>
+
+            <i class="fa-solid fa-phone text-white text-xl cursor-pointer"></i>
+
+        </div>
+
+        <!-- Déconnexion -->
+
+        <button>
+
+            <i class="fa-solid fa-right-from-bracket text-white text-xl"></i>
+
+        </button>
+
+    </aside>
+
+    <!-- ================= CONTENU ================= -->
+
+    <div class="flex flex-1">
+
+        <!-- ================= LISTE DES CONVERSATIONS ================= -->
+
+        <section class="w-96 bg-white border-r">
+
+            <!-- Header -->
+
+            <div class="p-6">
+
+                <h1 class="text-3xl font-bold">
+                    Chats
+                </h1>
+
+                <p class="text-gray-500 mt-1">
+                    Start new conversation
+                </p>
+                <!-- =================== Zone d'écriture =================== -->
+
+<div class="border-t bg-white px-6 py-4">
+
+    <div class="flex items-center gap-4">
+
+        <!-- Emoji -->
+
+        <button class="text-gray-500 hover:text-purple-600 text-2xl">
+            <i class="fa-regular fa-face-smile"></i>
+        </button>
+
+        <!-- Pièce jointe -->
+
+        <button class="text-gray-500 hover:text-purple-600 text-2xl">
+            <i class="fa-solid fa-paperclip"></i>
+        </button>
+
+        <!-- Champ message -->
+
+        <input
+            type="text"
+            id="messageInput"
+            placeholder="Type a message..."
+            class="flex-1 h-14 border border-gray-300 rounded-full px-6 outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200">
+
+        <!-- Envoyer -->
+
+        <button
+            id="sendBtn"
+            class="w-14 h-14 rounded-full bg-purple-600 hover:bg-purple-700 text-white flex items-center justify-center transition">
+
+            <i class="fa-solid fa-paper-plane text-xl"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+            </div>
+
+            <!-- Recherche -->
+
+            <div class="px-6">
+
+                <div class="flex items-center bg-gray-100 rounded-xl px-4 py-3">
+
+                    <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        class="bg-transparent outline-none ml-3 w-full">
+
+                </div>
+
+            </div>
+
+            <!-- Conversations -->
+
+            <div id="conversationList" class="mt-6">
+
+            </div>
+
+</div>
+        </section>
