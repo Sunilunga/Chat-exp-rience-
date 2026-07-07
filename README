@@ -122,3 +122,74 @@
 
 </div>
         </section>
+            const modal = document.getElementById("contactModal");
+
+const addBtn = document.getElementById("addContactBtn");
+
+const closeBtn = document.getElementById("closeModal");
+
+// Ouvrir
+
+addBtn.addEventListener("click", () => {
+
+    modal.classList.remove("hidden");
+
+    modal.classList.add("flex");
+
+});
+
+// Fermer
+
+closeBtn.addEventListener("click", () => {
+
+    modal.classList.add("hidden");
+
+    modal.classList.remove("flex");
+
+});
+  <!-- Zone vide conversations -->
+        <div class="flex-1 flex flex-col items-center justify-center">
+            <div class="w-28 h-28 rounded-full bg-violet-100 flex items-center justify-center">
+                <i class="fa-regular fa-comments text-violet-400 text-5xl"></i>
+            </div>
+            <h2 class="text-3xl font-bold mt-8">
+                No conversations yet</h2>
+            <p class="text-gray-500 mt-3 text-lg">
+                Start a new conversation
+            </p>
+        </div>
+ <div class="flex items-center gap-4 p-4 hover:bg-gray-100 rounded-xl cursor-pointer">
+                <div class="w-12 h-12 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold">
+
+                    ${contact.name.charAt(0).toUpperCase()}
+
+                </div>
+
+                <div>
+                    <h3 class="font-semibold">${contact.name}</h3>
+                    <p class="text-gray-500 text-sm">${contact.phone}</p>
+
+                </div>
+            </div>
+            function afficherContacts() {
+    const contactsList = document.getElementById("contactsList");
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    contactsList.innerHTML = "";
+
+    contacts.forEach(contact => {
+    <div class="flex items-center gap-4 p-4 hover:bg-gray-100 rounded-xl cursor-pointer">
+                <div class="w-12 h-12 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold">
+
+                    ${contact.name.charAt(0).toUpperCase()}
+
+                </div>
+
+                <div>
+                    <h3 class="font-semibold">${contact.name}</h3>
+                    <p class="text-gray-500 text-sm">${contact.phone}</p>
+
+                </div>
+            </div>
+    });
+}
+afficherContacts();

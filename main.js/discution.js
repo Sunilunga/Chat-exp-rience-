@@ -1,29 +1,40 @@
-// =============================
-// Contacts
-// =============================
+}
+const emojis = ["😀","😂","❤️","👍","🔥","🎉","😎"];
 
-const modal = document.getElementById("contactModal");
+emojis.forEach(emoji => {
+    // Au clic, ajouter l'emoji dans le champ
+    messageInput.value += emoji;
+});
+sendBtn.addEventListener("click", () => {
 
-const addBtn = document.getElementById("addContactBtn");
+    if (!currentContact) {
+        alert("Sélectionnez un contact");
+        return;
+    }
 
-const closeBtn = document.getElementById("closeModal");
+    const text = messageInput.value.trim();
 
-// Ouvrir
+    if (text === "") return;
 
-addBtn.addEventListener("click", () => {
+    const message = {
+        sender: "me",
+        content: text,
+        date: new Date().toLocaleTimeString()
+    };
 
-    modal.classList.remove("hidden");
+    // Sauvegarder et afficher le message
 
-    modal.classList.add("flex");
+    messageInput.value = "";
 
 });
+setTimeout(() => {
 
-// Fermer
+    const reply = {
+        sender: "contact",
+        content: "😀 Bonjour !",
+        date: new Date().toLocaleTimeString()
+    };
 
-closeBtn.addEventListener("click", () => {
+    // Afficher la réponse
 
-    modal.classList.add("hidden");
-
-    modal.classList.remove("flex");
-
-});
+}, 1000);
