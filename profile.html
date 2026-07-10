@@ -1,61 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Kadea Chat - Profile</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body class="bg-gray-100 min-h-screen flex">
 
-  <!-- Sidebar -->
-  <aside class="w-20 bg-white shadow-md flex flex-col items-center py-6 space-y-6">
-    <button class="text-blue-500">💬</button>
-    <button class="text-blue-500">👥</button>
-    <button class="text-blue-500">⚙️</button>
-    <button class="text-blue-500">➕</button>
-  </aside>
+<body class="bg-gray-100">
 
-  <!-- Main Content -->
-  <main class="flex-1 p-8">
-    <!-- Profile Header -->
-    <div class="text-center mb-8">
-      <img src="whatsApp image.jpg" alt="Profile" class="w-24 h-24 rounded-full mx-auto border-4 border-blue-500">
-      <h2 class="text-2xl font-semibold mt-4">Alex Rivera</h2>
-      <p class="text-gray-600">alex.rivera@example.com</p>
-      <p class="text-sm text-gray-500">Member since October 2023</p>
-    </div>
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-16 bg-white border-r flex flex-col justify-between">
 
+        <div>
+
+            <h1 class="text-blue-600 font-bold text-xl text-center mt-6">Kadea</h1>
+     <div class="mt-8 flex flex-col items-center gap-5">
+
+    <a href="discussion.html"
+       class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-violet-100 hover:text-violet-600 transition">
+        <i class="fa-regular fa-message text-xl"></i>
+    </a>
+
+    <button
+        class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-violet-100 hover:text-violet-600 transition">
+        <i class="fa-solid fa-phone text-xl"></i>
+    </button>
+
+    <button
+        class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-violet-100 hover:text-violet-600 transition">
+        <i class="fa-regular fa-user text-xl"></i>
+    </button>
+
+    <button
+        class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-violet-100 hover:text-violet-600 transition">
+        <i class="fa-regular fa-address-card text-xl"></i>
+    </button>
+
+    <a href="profile.html"
+        class="w-12 h-12 rounded-xl flex items-center justify-center bg-violet-600 text-white">
+        <i class="fa-solid fa-gear text-xl"></i>
+</a>
+
+</div>
+        </div>
+
+        <div class="mb-6 flex justify-center">
+            <button class="w-12 h-12 rounded-full bg-violet-600 text-white">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- Contenu -->
+    <main class="flex-1">
+        <!-- Header -->
+
+        <header class="h-16 bg-white border-b flex justify-between items-center px-8">
+
+            <h2 class="text-2xl font-bold text-violet-600">
+
+                Kadea Chat
+
+            </h2>
+
+            <div class="flex gap-6 text-gray-700 text-xl">
+                <i class="fa-solid fa-video"></i>
+                <i class="fa-solid fa-phone"></i>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+
+            </div>
+
+        </header>
+
+        <!-- Profil -->
+
+        <section class="flex flex-col items-center mt-8">
+
+            <img
+            src="https://i.pravatar.cc/180"
+            class="w-40 h-40 rounded-full border-4 border-white shadow-lg">
+
+            <span
+            class="w-6 h-6 bg-green-500 rounded-full border-2 border-white -mt-6 ml-28">
+            </span>
+
+            <h2 class="text-3xl font-bold mt-6">
+                Dison
+            </h2>
+
+            <p class="text-gray-500">
+                alex.rivera@example.com
+            </p>
+
+            <span
+            class="bg-violet-100 text-violet-600 px-4 py-1 rounded-full mt-4 text-sm">
+                Member since October 2023
+            </span>
+
+        </section>
+        <!-- Cartes -->
+<div class="grid grid-cols-2 gap-8 w-4/5 mx-auto mt-12">
     <!-- Account Details -->
-    <div class="bg-white shadow rounded-lg p-6 mb-6">
-      <h3 class="text-lg font-semibold mb-4">Account Details</h3>
-      <ul class="space-y-2 text-gray-700">
-        <li><span class="font-medium">Username:</span> arivera_chat</li>
-        <li><span class="font-medium">Phone:</span> +1 (555) 012-3456</li>
-        <li><span class="font-medium">Language:</span> English (US)</li>
-      </ul>
+    <div class="bg-white rounded-2xl shadow border p-8">
+        <div class="flex justify-between items-center mb-8">
+            <h3 class="text-xl font-bold">
+                Account Details
+            </h3>
+            <i class="fa-regular fa-id-badge text-gray-500"></i>
+        </div>
+        <div class="space-y-6">
+            <div>
+                <p class="text-xs uppercase text-gray-400">
+                    Username
+                </p>
+                <p class="font-medium">
+                    alexrivera_chat
+                </p>
+
+            </div>
+            <div>
+                <p class="text-xs uppercase text-gray-400">Phone</p>
+
+                <p class="font-medium">+243 99 123 45 67</p>
+
+            </div>
+
+            <div>
+
+                <p class="text-xs uppercase text-gray-400">
+                    Language</p>
+
+                <p class="font-medium">
+                    Français</p>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Privacy -->
+    <div class="bg-white rounded-2xl shadow border p-8">
+        <div class="flex justify-between items-center mb-8">
+            <h3 class="text-xl font-bold">
+                Privacy & Security
+            </h3>
+
+            <i class="fa-solid fa-lock text-gray-500"></i>
+
+        </div>
+        <div class="space-y-6">
+
+            <div class="flex justify-between">
+                <span>
+                    Two-Factor Authentication
+                </span>
+
+                <span class="text-violet-600 font-semibold">
+                    Enabled
+                </span>
+            </div>
+
+            <div class="flex justify-between">
+
+                <span>
+                    Active Sessions
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+            <div class="flex justify-between">
+
+                <span>
+                    Notification Preferences
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- Privacy & Security -->
-    <div class="bg-white shadow rounded-lg p-6 mb-6">
-      <h3 class="text-lg font-semibold mb-4">Privacy & Security</h3>
-      <ul class="space-y-2 text-gray-700">
-        <li><span class="font-medium">Two-Factor Auth:</span> Enabled</li>
-        <li><span class="font-medium">Active Sessions</span></li>
-        <li><span class="font-medium">Alert Preferences</span></li>
-      </ul>
-    </div>
+</div>
 
-    <!-- Actions -->
-    <div class="flex space-x-4">
-      <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Edit Profile</button>
-      <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Change Password</button>
-      <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
-    </div>
+<!-- Boutons -->
 
-    <!-- Footer -->
-    <footer class="mt-8 text-center text-sm text-gray-500">
-      Kadea Chat v1.0.0 — Encryption Active
-    </footer>
-  </main>
+<div class="flex flex-col items-center mt-10 gap-4">
+
+    <button
+        class="w-96 h-14 bg-violet-600 text-white rounded-xl font-semibold hover:bg-violet-700 transition">
+<a href="connexion.html">
+        <i class="fa-solid fa-pen mr-2"></i>
+
+        Edit Profile
+
+    </button>
+</a>
+    <button
+        class="w-96 h-14 bg-gray-200 rounded-xl font-semibold hover:bg-gray-300 transition">
+<a href="création.html"
+        <i class="fa-solid fa-key mr-2"></i>
+
+        Change Password
+
+    </button>
+
+</a>
+
+    <button
+        class="text-red-600 font-bold hover:text-red-700">
+
+        <i class="fa-solid fa-right-from-bracket mr-2"></i>
+
+        Logout
+
+    </button>
+
+</div>
+
+
+
+<footer class="text-center text-gray-400 text-xs mt-8 pb-4">
+
+    Kadea Chat v1.0 — Encryption Active
+
+</footer>
+
+</main>
+
+</div>
+<script src="profile.js"></script>
+
 </body>
 </html>
