@@ -193,3 +193,13 @@ closeBtn.addEventListener("click", () => {
     });
 }
 afficherContacts();
+ card.addEventListener("click", () => {
+
+            document.getElementById("chatName").textContent = contact.name;
+
+            document.getElementById("chatPhone").textContent = contact.phone;
+
+            document.getElementById("chatAvatar").textContent =
+                contact.name.charAt(0).toUpperCase();
+
+        });
