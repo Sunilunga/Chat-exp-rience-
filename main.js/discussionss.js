@@ -1,4 +1,8 @@
+const token = localStorage.getItem("token");
 
+if (!token) {
+    window.location.href = "connexion.html";
+}
 
 // Contact actuellement sélectionné
 let currentContact = null;
@@ -102,14 +106,30 @@ afficherContacts();
 function ouvrirDiscussion(contact){
 
     currentContact = contact;
-
     chatName.textContent = contact.name;
-
     chatPhone.textContent = contact.phone;
-
     chatAvatar.textContent =
-
     contact.name.charAt(0).toUpperCase();
+
+      // Responsive mobile
+    if (window.innerWidth < 768) {
+
+        document.getElementById("contactsPanel").classList.add("hidden");
+
+        const chatPanel = document.getElementById("chatPanel");
+        chatPanel.classList.remove("hidden");
+        chatPanel.classList.add("flex");
+    }
 
 }
  afficherMessages();
+
+const backBtn = document.getElementById("backBtn");
+backBtn.addEventListener("click", () => {
+    const contacts = document.getElementById("contactsPanel");
+    const chat = document.getElementById("chatPanel");
+    chat.classList.add("hidden");
+    chat.classList.remove("flex");
+    contacts.classList.remove("hidden");
+
+});

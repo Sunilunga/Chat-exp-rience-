@@ -67,3 +67,19 @@ loginForm.addEventListener("submit", async (e) => {
         alert("❌ Impossible de contacter le serveur.");
     }
 });
+fetch(url, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => {
+
+    // Connexion réussie
+
+});
+localStorage.setItem("token", data.token);
+
+window.location.href = "discussionss.html";

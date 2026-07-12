@@ -10,237 +10,354 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-
 <body class="bg-gray-100">
 
-<div class="flex h-screen">
-    <!-- Sidebar -->
-    <aside class="w-16 bg-white border-r flex flex-col justify-between">
+<div class="flex flex-col md:flex-row h-screen">
 
-        <div>
+    <!-- ================= Sidebar ================= -->
 
-            <h1 class="text-blue-600 font-bold text-xl text-center mt-6">Kadea</h1>
-     <div class="mt-8 flex flex-col items-center gap-5">
+    <aside
+        class="w-full md:w-20 h-16 md:h-full bg-violet-600 flex md:flex-col justify-between items-center px-4 md:px-0 py-3 md:py-6">
 
-    <a href="discussionss.html"
-       class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-violet-100 hover:text-violet-600 transition">
-        <i class="fa-regular fa-message text-xl"></i>
-    </a>
+        <div class="flex md:flex-col items-center gap-4 md:gap-6">
 
-    <button
-        class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-violet-100 hover:text-violet-600 transition">
-        <i class="fa-solid fa-phone text-xl"></i>
-    </button>
+            <a
+                href="discussionss.html"
+                class="w-11 h-11 rounded-xl flex justify-center items-center text-white hover:bg-white hover:text-violet-600 transition">
 
-    <button
-        class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-violet-100 hover:text-violet-600 transition">
-        <i class="fa-regular fa-user text-xl"></i>
-    </button>
+                <i class="fa-regular fa-message text-xl"></i>
 
-    <button
-        class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-violet-100 hover:text-violet-600 transition">
-        <i class="fa-regular fa-address-card text-xl"></i>
-    </button>
+            </a>
 
-    <a href="profile.html"
-        class="w-12 h-12 rounded-xl flex items-center justify-center bg-violet-600 text-white">
-        <i class="fa-solid fa-gear text-xl"></i>
-</a>
+            <button
+                class="w-11 h-11 rounded-xl flex justify-center items-center text-white hover:bg-white hover:text-violet-600 transition">
 
-</div>
+                <i class="fa-solid fa-phone text-xl"></i>
+
+            </button>
+
+            <button
+                class="w-11 h-11 rounded-xl flex justify-center items-center text-white hover:bg-white hover:text-violet-600 transition">
+
+                <i class="fa-regular fa-address-book text-xl"></i>
+
+            </button>
+
         </div>
 
-        <div class="mb-6 flex justify-center">
-            <button class="w-12 h-12 rounded-full bg-violet-600 text-white">
-                <i class="fa-solid fa-plus"></i>
+        <div class="flex md:flex-col gap-4">
+
+            <a
+                href="profile.html"
+                class="w-11 h-11 rounded-xl bg-white text-violet-600 flex justify-center items-center">
+
+                <i class="fa-solid fa-user"></i>
+
+            </a>
+
+            <button
+                class="w-11 h-11 rounded-xl flex justify-center items-center text-white hover:bg-white hover:text-violet-600 transition">
+
+                <i class="fa-solid fa-gear"></i>
+
             </button>
 
         </div>
 
     </aside>
 
-    <!-- Contenu -->
-    <main class="flex-1">
-        <!-- Header -->
+    <!-- ================= Contenu ================= -->
 
-        <header class="h-16 bg-white border-b flex justify-between items-center px-8">
+    <main class="flex-1 overflow-y-auto">
 
-            <h2 class="text-2xl font-bold text-violet-600">
+        <header
+            class="bg-white h-16 md:h-20 border-b flex justify-between items-center px-5 md:px-8">
 
-                Kadea Chat
-
-            </h2>
-
-            <div class="flex gap-6 text-gray-700 text-xl">
-                <i class="fa-solid fa-video"></i>
-                <i class="fa-solid fa-phone"></i>
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-
-            </div>
+            <h1
+                class="text-xl md:text-2xl font-bold text-violet-600">Mon Profil </h1>
+            <a
+                href="discussionss.html"
+                class="text-violet-600 text-xl">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
 
         </header>
+        <!-- ================= Profil ================= -->
+        <section
+            class="flex flex-col items-center py-8 px-4">
+<div class="flex flex-col items-center">
 
-        <!-- Profil -->
+    <!-- Photo -->
 
-        <section class="flex flex-col items-center mt-8">
+    <div class="relative">
 
-            <img
-            src="https://i.pravatar.cc/180"
-            class="w-40 h-40 rounded-full border-4 border-white shadow-lg">
+        <img
+            id="profileImage"
+            src="https://i.pravatar.cc/300"
+            alt="Photo de profil"
+            class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg">
 
-            <span
-            class="w-6 h-6 bg-green-500 rounded-full border-2 border-white -mt-6 ml-28">
-            </span>
+        <label
+            for="imageInput"
+            class="absolute bottom-2 right-2 w-10 h-10 rounded-full bg-violet-600 text-white flex items-center justify-center cursor-pointer hover:bg-violet-700 transition">
 
-            <h2 class="text-3xl font-bold mt-6">
-                Dison
-            </h2>
+            <i class="fa-solid fa-camera"></i>
 
-            <p class="text-gray-500">
-                dison.sun@example.com
-            </p>
+        </label>
 
-            <span
-            class="bg-violet-100 text-violet-600 px-4 py-1 rounded-full mt-4 text-sm">
-                Member since October 2023
-            </span>
-
-        </section>
-        <!-- Cartes -->
-<div class="grid grid-cols-2 gap-8 w-4/5 mx-auto mt-12">
-    <!-- Account Details -->
-    <div class="bg-white rounded-2xl shadow border p-8">
-        <div class="flex justify-between items-center mb-8">
-            <h3 class="text-xl font-bold">
-                Account Details
-            </h3>
-            <i class="fa-regular fa-id-badge text-gray-500"></i>
-        </div>
-        <div class="space-y-6">
-            <div>
-                <p class="text-xs uppercase text-gray-400">
-                    Username
-                </p>
-                <p class="font-medium">
-                    disonsun_chat
-                </p>
-
-            </div>
-            <div>
-                <p class="text-xs uppercase text-gray-400">Phone</p>
-
-                <p class="font-medium">+243 97 605 37 46</p>
-
-            </div>
-
-            <div>
-
-                <p class="text-xs uppercase text-gray-400">
-                    Language</p>
-
-                <p class="font-medium">
-                    Français</p>
-
-            </div>
-
-        </div>
-
-    </div>
-    <!-- Privacy -->
-    <div class="bg-white rounded-2xl shadow border p-8">
-        <div class="flex justify-between items-center mb-8">
-            <h3 class="text-xl font-bold">
-                Privacy & Security
-            </h3>
-
-            <i class="fa-solid fa-lock text-gray-500"></i>
-
-        </div>
-        <div class="space-y-6">
-
-            <div class="flex justify-between">
-                <span>
-                    Two-Factor Authentication
-                </span>
-
-                <span class="text-violet-600 font-semibold">
-                    Enabled
-                </span>
-            </div>
-
-            <div class="flex justify-between">
-
-                <span>
-                    Active Sessions
-                </span>
-
-                <i class="fa-solid fa-chevron-right"></i>
-
-            </div>
-
-            <div class="flex justify-between">
-
-                <span>
-                    Notification Preferences
-                </span>
-
-                <i class="fa-solid fa-chevron-right"></i>
-
-            </div>
-
-        </div>
+        <input
+            id="imageInput"
+            type="file"
+            accept="image/*"
+            class="hidden">
 
     </div>
 
-</div>
+    <!-- Nom -->
 
-<!-- Boutons -->
+    <h2
+        id="profileName"
+        class="text-2xl md:text-3xl font-bold mt-6">
 
-<div class="flex flex-col items-center mt-10 gap-4">
+        Mon Nom
+
+    </h2>
+
+    <!-- Email -->
+
+    <p
+        id="profileEmail"
+        class="text-gray-500 mt-2 text-center">
+
+        email@example.com
+
+    </p>
+
+    <!-- Modifier le nom -->
 
     <button
-        class="w-96 h-14 bg-violet-600 text-white rounded-xl font-semibold hover:bg-violet-700 transition">
-<a href="connexion.html">
+        id="editNameBtn"
+        class="mt-5 px-6 py-3 rounded-xl bg-violet-600 text-white hover:bg-violet-700 transition">
+
         <i class="fa-solid fa-pen mr-2"></i>
 
-        Edit Profile
-
-    </button>
-</a>
-    <button
-        class="w-96 h-14 bg-gray-200 rounded-xl font-semibold hover:bg-gray-300 transition">
-<a href="création.html"
-        <i class="fa-solid fa-key mr-2"></i>
-
-        Change Password
+        Modifier le nom
 
     </button>
 
-</a>
-
-   <button
-    id="deleteAccountBtn"
-    class="text-red-600 font-bold hover:text-red-700">
-
-    <i class="fa-solid fa-right-from-bracket mr-2"></i>
-
-    Logout
-
-</button>
 </div>
 
+<!-- ================= Modal ================= -->
 
+<div
+    id="nameModal"
+    class="fixed inset-0 hidden items-center justify-center bg-black/40 z-50">
 
-<footer class="text-center text-gray-400 text-xs mt-8 pb-4">
+    <div
+        class="bg-white rounded-2xl w-[90%] max-w-sm p-6">
 
-    Kadea Chat v1.0 — Encryption Active
+        <h2 class="text-2xl font-bold mb-5">
+
+            Modifier votre nom
+
+        </h2>
+
+        <input
+            id="newName"
+            type="text"
+            placeholder="Entrez votre nouveau nom"
+            class="w-full h-12 border rounded-xl px-4 outline-none focus:border-violet-600">
+
+        <div class="flex justify-end gap-3 mt-6">
+
+            <button
+                id="cancelName"
+                class="px-5 py-2 rounded-lg bg-gray-200 hover:bg-gray-300">
+
+                Annuler
+
+            </button>
+
+            <button
+                id="saveName"
+                class="px-5 py-2 rounded-lg bg-violet-600 text-white hover:bg-violet-700">
+
+                Enregistrer
+
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+        <!-- Carte Compte -->
+<!-- ================= Informations ================= -->
+
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 w-[90%] md:w-4/5 mx-auto">
+
+    <!-- Account Details -->
+
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+        <div class="flex justify-between items-center mb-6">
+
+            <h3 class="text-xl font-bold">
+
+                Account Details
+
+            </h3>
+
+            <i class="fa-regular fa-id-card text-violet-600 text-2xl"></i>
+
+        </div>
+
+        <div class="space-y-5">
+
+            <div>
+
+                <p class="text-gray-400 text-sm">
+
+                    Full Name
+
+                </p>
+
+                <p
+                    id="accountName"
+                    class="font-semibold text-lg">
+
+                    Dison
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-400 text-sm">
+
+                    Email
+
+                </p>
+
+                <p
+                    id="accountEmail"
+                    class="font-semibold">
+
+                    email@example.com
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <p class="text-gray-400 text-sm">Phone </p>
+
+                <p class="font-semibold">
+
+                    +243 ... </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Privacy & Security -->
+
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+        <div class="flex justify-between items-center mb-6">
+
+            <h3 class="text-xl font-bold">
+
+                Privacy & Security
+
+            </h3>
+
+            <i class="fa-solid fa-shield-halved text-violet-600 text-2xl"></i>
+
+        </div>
+
+        <div class="space-y-5">
+
+            <div class="flex justify-between">
+
+                <span>
+
+                    Two-Factor Authentication
+
+                </span>
+
+                <span class="text-green-600">
+
+                    Enabled
+
+                </span>
+
+            </div>
+
+            <div class="flex justify-between">
+
+                <span>
+
+                    Active Sessions
+
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+            <div class="flex justify-between">
+
+                <span>
+
+                    Notifications
+
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="w-full flex justify-center mt-10 mb-8">
+
+    <div class="w-[90%] md:w-4/5">
+
+        <button
+            id="deleteAccountBtn"
+            class="w-full h-14 bg-red-600 text-white rounded-2xl font-semibold hover:bg-red-700 transition">
+
+            <i class="fa-solid fa-trash mr-2"></i>
+
+            Supprimer le compte
+
+        </button>
+
+    </div>
+
+</section>
+
+<footer class="text-center pb-6">
+
+    <p class="text-gray-500">
+
+        © 2026 Kadea Chat
+
+    </p>
 
 </footer>
 
-</main>
-
-</div>
 <script src="profile.js"></script>
 
+</main>
+</div>
 </body>
 </html>

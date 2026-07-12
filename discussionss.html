@@ -10,85 +10,99 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 overflow-hidden">
 
 <div class="flex h-screen">
 
     <!-- ================= Sidebar ================= -->
 
-    <aside class="w-20 bg-violet-600 flex flex-col justify-between items-center py-6">
+    <aside
+        class="hidden md:flex w-20 bg-violet-600 flex-col justify-between items-center py-6">
 
         <div class="flex flex-col items-center gap-6">
 
-            <!-- Logo -->
-
-            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center">
+            <div
+                class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center">
 
                 <i class="fa-solid fa-comments text-violet-600 text-2xl"></i>
 
             </div>
 
-            <a href="discussionss.html"
-               class="w-12 h-12 rounded-xl bg-violet-500 flex items-center justify-center text-white hover:bg-white hover:text-violet-600 transition">
+            <a
+                href="discussionss.html"
+                class="w-12 h-12 rounded-xl bg-violet-500 flex items-center justify-center text-white hover:bg-white hover:text-violet-600 duration-200">
 
                 <i class="fa-regular fa-message text-xl"></i>
 
             </a>
 
             <button
-                class="w-12 h-12 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-violet-600 transition">
+                class="w-12 h-12 rounded-xl text-white hover:bg-white hover:text-violet-600 duration-200">
 
                 <i class="fa-solid fa-phone text-xl"></i>
 
             </button>
 
             <button
-                class="w-12 h-12 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-violet-600 transition">
+                class="w-12 h-12 rounded-xl text-white hover:bg-white hover:text-violet-600 duration-200">
+
                 <i class="fa-regular fa-address-book text-xl"></i>
 
             </button>
 
         </div>
 
-        <div class="flex flex-col items-center gap-4">
+        <div class="flex flex-col gap-4">
 
-            <a href="profile.html"
-               class="w-12 h-12 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-violet-600 transition">
+            <a
+                href="profile.html"
+                class="w-12 h-12 rounded-xl flex justify-center items-center text-white hover:bg-white hover:text-violet-600 duration-200">
 
                 <i class="fa-regular fa-user text-xl"></i>
 
             </a>
 
             <button
-                class="w-12 h-12 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-violet-600 transition">
+                class="w-12 h-12 rounded-xl text-white hover:bg-white hover:text-violet-600 duration-200">
+
                 <i class="fa-solid fa-gear text-xl"></i>
+
             </button>
+
         </div>
+
     </aside>
 
-    <!-- ================= Liste des conversations ================= -->
+    <!-- ================= Conversations ================= -->
 
-    <section class="w-[380px] bg-white border-r flex flex-col">
+    <section
+        id="contactsPanel"
+        class="w-full md:w-96 bg-white border-r flex flex-col">
 
         <!-- Header -->
 
-        <div class="flex items-center justify-between p-6">
+        <div class="flex justify-between items-center p-5">
 
             <div>
 
-                <h1 class="text-3xl font-bold">
+                <h1 class="text-2xl md:text-3xl font-bold">
+
                     Chats
+
                 </h1>
 
                 <p class="text-gray-500 text-sm">
+
                     Start new conversation
+
                 </p>
 
             </div>
 
             <button
                 id="addContactBtn"
-                class="w-12 h-12 rounded-full bg-violet-600 text-white hover:bg-violet-700">
+                class="w-11 h-11 md:w-12 md:h-12 rounded-full bg-violet-600 text-white hover:bg-violet-700">
+
                 <i class="fa-solid fa-user-plus"></i>
 
             </button>
@@ -97,49 +111,74 @@
 
         <!-- Recherche -->
 
-        <div class="px-6">
+        <div class="px-5">
 
-            <div class="flex items-center h-12 bg-gray-100 rounded-full px-4">
-                <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+            <div
+                class="flex items-center bg-gray-100 rounded-full px-4 h-11">
+
+                <i
+                    class="fa-solid fa-magnifying-glass text-gray-500"></i>
 
                 <input
                     id="searchInput"
                     type="text"
                     placeholder="Search..."
-                    class="ml-3 w-full bg-transparent outline-none">
+
+                    class="ml-3 flex-1 bg-transparent outline-none">
 
             </div>
 
         </div>
-        <!-- Liste des contacts -->
+
+        <!-- Contacts -->
+
         <div
             id="contactsList"
-            class="flex-1 overflow-y-auto mt-4 px-3 space-y-2">
+            class="flex-1 overflow-y-auto mt-4 px-2 space-y-2">
+
         </div>
 
     </section>
+    <!-- ================= Zone de discussion ================= -->
 
-<!-- ================= Zone de discussion ================= -->
-
-<section class="flex-1 flex flex-col bg-[#F8F5F2]">
+<section
+    id="chatPanel"
+    class="hidden md:flex flex-1 flex-col bg-[#F8F5F2]">
 
     <!-- Header -->
 
-    <header class="h-20 bg-white border-b flex items-center justify-between px-6">
+    <header
+        class="bg-white border-b h-16 md:h-20 flex items-center justify-between px-4 md:px-6">
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
+
+            <!-- Retour mobile -->
+
+            <button
+                id="backBtn"
+                class="md:hidden text-violet-600 text-xl">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </button>
+
+            <!-- Avatar -->
 
             <div
                 id="chatAvatar"
-                class="w-12 h-12 rounded-full bg-violet-600 text-white flex items-center justify-center font-bold text-lg">
+                class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-violet-600 text-white flex items-center justify-center font-bold">
+
                 ?
+
             </div>
+
+            <!-- Infos -->
 
             <div>
 
                 <h2
                     id="chatName"
-                    class="font-bold text-lg">
+                    class="font-bold text-base md:text-lg">
 
                     Sélectionnez un contact
 
@@ -147,7 +186,7 @@
 
                 <p
                     id="chatPhone"
-                    class="text-sm text-gray-500">
+                    class="text-xs md:text-sm text-gray-500">
 
                     Aucun contact
 
@@ -157,25 +196,29 @@
 
         </div>
 
-        <div class="flex items-center gap-5">
+        <!-- Actions -->
 
-            <button class="text-violet-600 text-xl">
+        <div class="flex items-center gap-4 md:gap-6">
 
-                <i class="fa-solid fa-video"></i>
+            <button
+                class="text-violet-600 hover:scale-110 duration-200">
+
+                <i class="fa-solid fa-video text-lg md:text-xl"></i>
 
             </button>
 
-            <button class="text-violet-600 text-xl">
+            <button
+                class="text-violet-600 hover:scale-110 duration-200">
 
-                <i class="fa-solid fa-phone"></i>
+                <i class="fa-solid fa-phone text-lg md:text-xl"></i>
 
             </button>
 
             <a
                 href="profile.html"
-                class="text-violet-600 text-xl">
+                class="text-violet-600 hover:scale-110 duration-200">
 
-                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user text-lg md:text-xl"></i>
 
             </a>
 
@@ -187,25 +230,31 @@
 
     <main
         id="chatMessages"
-        class="flex-1 overflow-y-auto p-6 space-y-4">
+        class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
 
         <div
             id="emptyState"
-            class="flex flex-col items-center justify-center h-full">
+            class="flex flex-col items-center justify-center h-full text-center">
 
-            <div class="w-28 h-28 rounded-full bg-violet-100 flex items-center justify-center">
+            <div
+                class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-violet-100 flex items-center justify-center">
 
-                <i class="fa-regular fa-comments text-violet-500 text-5xl"></i>
+                <i
+                    class="fa-regular fa-comments text-violet-500 text-5xl md:text-6xl">
+
+                </i>
 
             </div>
 
-            <h2 class="text-3xl font-bold mt-6">
+            <h2
+                class="text-2xl md:text-4xl font-bold mt-6">
 
                 No conversation
 
             </h2>
 
-            <p class="text-gray-500 mt-2">
+            <p
+                class="text-gray-500 mt-3 text-sm md:text-base">
 
                 Sélectionnez un contact pour commencer.
 
@@ -217,135 +266,170 @@
 
     <!-- Footer -->
 
-  <footer class="bg-white border-t p-4">
+    <footer
+        class="bg-white border-t p-3 md:p-4">
 
-    <div class="flex items-center gap-3">
+        <div
+            class="flex items-center gap-2 md:gap-3">
 
-        <!-- Emoji -->
+            <!-- Emoji -->
 
-        <button
-            id="emojiBtn"
-            class="w-10 h-10 rounded-full hover:bg-violet-100 text-2xl">
+            <button
+                id="emojiBtn"
+                class="w-10 h-10 rounded-full hover:bg-violet-100 text-2xl">
 
-            😊
+                😊
 
-        </button>
+            </button>
 
-        <!-- Fichier -->
+            <!-- Pièce jointe -->
 
-        <button
-            id="fileBtn"
-            class="w-10 h-10 rounded-full hover:bg-violet-100">
+            <button
+                id="fileBtn"
+                class="w-10 h-10 rounded-full hover:bg-violet-100">
 
-            <i class="fa-solid fa-paperclip text-violet-600"></i>
+                <i
+                    class="fa-solid fa-paperclip text-violet-600">
 
-        </button>
+                </i>
 
-        <input
-            id="fileInput"
-            type="file"
-            class="hidden"
-            accept="image/*,video/*,.pdf,.doc,.docx">
+            </button>
 
-        <!-- Message -->
+            <input
+                id="fileInput"
+                type="file"
+                class="hidden"
+                accept="image/*,video/*,.pdf,.doc,.docx">
 
-        <input
-            id="messageInput"
-            type="text"
-            placeholder="Écrire un message..."
+            <!-- Message -->
 
-            class="flex-1 h-12 rounded-full border border-violet-300 px-5 outline-none">
+            <input
+                id="messageInput"
+                type="text"
+                placeholder="Écrire un message..."
 
-        <!-- Envoyer -->
+                class="flex-1 h-10 md:h-12 border rounded-full px-4 md:px-5 outline-none focus:border-violet-600 text-sm md:text-base">
 
-        <button
-            id="sendBtn"
-            class="w-12 h-12 rounded-full bg-violet-600 text-white hover:bg-violet-700">
+            <!-- Envoyer -->
 
-            <i class="fa-solid fa-paper-plane"></i>
+            <button
+                id="sendBtn"
+                class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-violet-600 text-white hover:bg-violet-700 hover:scale-105 duration-200">
 
-        </button>
+                <i
+                    class="fa-solid fa-paper-plane">
 
-    </div>
+                </i>
 
-    <!-- Liste des emojis -->
+            </button>
 
-    <div
-        id="emojiPanel"
-        class="hidden mt-3 bg-white border rounded-xl p-3 flex flex-wrap gap-2">
+        </div>
 
-        <button class="emoji">😀</button>
-        <button class="emoji">😂</button>
-        <button class="emoji">🤣</button>
-        <button class="emoji">😍</button>
-        <button class="emoji">🥰</button>
-        <button class="emoji">❤️</button>
-        <button class="emoji">🔥</button>
-        <button class="emoji">👍</button>
-        <button class="emoji">👏</button>
-        <button class="emoji">🎉</button>
-        <button class="emoji">😎</button>
-        <button class="emoji">😭</button>
-        <button class="emoji">🙏</button>
+        <!-- Emojis -->
 
-    </div>
+        <div
+            id="emojiPanel"
+            class="hidden mt-4 bg-white border rounded-xl p-3 flex flex-wrap gap-2">
 
-</footer>
+            <button class="emoji text-2xl">😀</button>
+            <button class="emoji text-2xl">😂</button>
+            <button class="emoji text-2xl">🤣</button>
+            <button class="emoji text-2xl">😍</button>
+            <button class="emoji text-2xl">🥰</button>
+            <button class="emoji text-2xl">❤️</button>
+            <button class="emoji text-2xl">🔥</button>
+            <button class="emoji text-2xl">👍</button>
+            <button class="emoji text-2xl">👏</button>
+            <button class="emoji text-2xl">🎉</button>
+            <button class="emoji text-2xl">😎</button>
+            <button class="emoji text-2xl">😭</button>
+            <button class="emoji text-2xl">🙏</button>
+
+        </div>
+
+    </footer>
 
 </section>
 <!-- ================= Modal Ajouter un contact ================= -->
-
 <div
     id="contactModal"
-    class="fixed inset-0 bg-black/50 hidden items-center justify-center">
+    class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
 
-    <div class="bg-white rounded-2xl w-[420px] p-6">
+    <div
+        class="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl">
+        <div class="flex items-center justify-between mb-6">
 
-        <h2 class="text-2xl font-bold mb-6">
+            <h2 class="text-2xl font-bold">
+                Nouveau contact</h2>
 
-            Nouveau contact
+            <button
+                id="closeModal"
+                class="w-10 h-10 rounded-full hover:bg-gray-100">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+        <!-- Nom -->
+        <div class="mb-4">
+            <label class="font-medium">
+                Nom
+            </label>
 
-        </h2>
+            <input
+                id="contactName"
+                type="text"
+                placeholder="Nom du contact"
+                class="mt-2 w-full h-12 border rounded-xl px-4 outline-none focus:border-violet-600">
+        </div>
+        <!-- Téléphone -->
+        <div class="mb-6">
 
-        <input
-            id="contactName"
-            type="text"
-            placeholder="Nom du contact"
-            class="w-full h-12 border rounded-xl px-4 mb-4 outline-none focus:border-violet-600">
+            <label class="font-medium">
+                Téléphone
+            </label>
 
-        <input
-            id="contactPhone"
-            type="text"
-            placeholder="Numéro de téléphone"
-            class="w-full h-12 border rounded-xl px-4 mb-6 outline-none focus:border-violet-600">
+            <input
+
+                id="contactPhone"
+                type="tel"
+                placeholder="+243..."
+                class="mt-2 w-full h-12 border rounded-xl px-4 outline-none focus:border-violet-600">
+        </div>
+
+        <!-- Boutons -->
 
         <div class="flex justify-end gap-3">
 
             <button
-                id="closeModal"
-                class="px-5 py-2 rounded-lg bg-gray-200 hover:bg-gray-300">
 
+                id="cancelBtn"
+                class="px-6 py-3 rounded-xl bg-gray-200 hover:bg-gray-300">
                 Annuler
-
             </button>
+            <button
+    id="backBtn"
+    class="md:hidden mr-3 text-violet-600 text-xl">
+
+    <a  href="discussions.html" class="fa-solid fa-arrow-left"></a>
+
+</button>
 
             <button
                 id="saveContact"
-                class="px-5 py-2 rounded-lg bg-violet-600 text-white hover:bg-violet-700">
-
+                class="px-6 py-3 rounded-xl bg-violet-600 text-white hover:bg-violet-700">
                 Ajouter
-
             </button>
-<input
-    id="fileInput"
-    type="file"
-    class="hidden"
-    accept="image/*,video/*,.pdf,.doc,.docx">
+
         </div>
 
     </div>
-
 </div>
+<!-- ================= Toast ================= -->
+<div
+    id="toast"
+    class="hidden fixed top-5 right-5 bg-violet-600 text-white px-6 py-3 rounded-xl shadow-lg z-50">
+    Contact ajouté avec succès
+</div>
+
 <script src="main.js/discussionss.js"></script>
 
 </body>
