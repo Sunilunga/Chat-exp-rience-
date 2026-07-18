@@ -54,7 +54,7 @@ loginForm.addEventListener("submit", async (e) => {
             localStorage.setItem("user", JSON.stringify(data.data.user));
             alert("✅ Connexion réussie !");
             // Redirection
-            window.location.href = "dashboard.html";
+            window.location.href = "discussionss.html";
 
         }
         else {

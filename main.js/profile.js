@@ -1,139 +1,294 @@
-const profileEmail = document.querySelector("section p");
-const editBtn = document.querySelector(".bg-violet-600");
+// =============================================
+// CONFIGURATION API
 
-// Charger le profil
+const API_URL = "https://kadea-chat-api.onrender.com";
 
-function loadProfile() {
+// Remplace par ton vrai Workspace Token
+const API_KEY = "TON_WORKSPACE_TOKEN";
 
-    const user = JSON.parse(localStorage.getItem("currentUser"));
+// Token JWT enregistré après la connexion
+const TOKEN = localStorage.getItem("token");
 
-    if (!user) {
+// =============================================
+// ELEMENTS HTML
+const profileImage = document.getElementById("profileImage");
+const profileName = document.getElementById("profileName");
+const profileEmail = document.getElementById("profileEmail");
+const accountName = document.getElementById("accountName");
+const accountEmail = document.getElementById("accountEmail");
+const imageInput = document.getElementById("imageInput");
+const editNameBtn = document.getElementById("editNameBtn");
+const nameModal = document.getElementById("nameModal");
+const cancelName = document.getElementById("cancelName");
+const saveName = document.getElementById("saveName");
+const newName = document.getElementById("newName");
+// =============================================
+// UTILISATEUR CONNECTE
+let currentUser = null;
+// =============================================
+// CHARGER LE PROFIL
+async function chargerProfil() {
+    try {
+        const response = await fetch(`${API_URL}/auth/me`, {
+            headers: {
+                "x-api-key": API_KEY,
+                "Authorization": `Bearer ${TOKEN}`
 
-        window.location.href = "login.html";
-        return;
+            }
 
+        });
+        const result = await response.json();
+        if (!result.success) {
+            alert(result.message);
+            return;
+        }
+        currentUser = result.data;
+        afficherProfil();
     }
-
-    profileName.textContent = user.fullName;
-    profileEmail.textContent = user.email;
+    catch (error) {
+        console.error(error);
+        alert("Impossible de récupérer le profil.");
+    }
 
 }
+// =============================================
+// AFFICHER LE PROFIL
+function afficherProfil() {
+    if (!currentUser) return;
+    // Nom
+    profileName.textContent =
+        currentUser.fullName || "Utilisateur";
+    accountName.textContent =
+        currentUser.fullName || "Utilisateur";
+    // Email
+    profileEmail.textContent =
+        currentUser.email || "";
+    accountEmail.textContent =
+        currentUser.email || "";
+    // Avatar
+    if (currentUser.avatarUrl) {
+        profileImage.src = currentUser.avatarUrl;
+    } else {
+        profileImage.src =
+            "https://i.pravatar.cc/300";
 
-// Charger au démarrage
+    }
+    // Bio (si tu ajoutes cet élément dans ton HTML)
+    const bio = document.getElementById("profileBio");
+    if (bio) {
+        bio.textContent =
+            currentUser.bio || "Aucune bio.";
+    }
+}
+// =============================================
+// LANCEMENT
+document.addEventListener("DOMContentLoaded", () => {
 
-loadProfile();
+    if (!TOKEN) {
+        alert("Vous devez vous connecter.");
+        window.location.href = "connexion.html";
+        return;
+    }
+    chargerProfil();
+});
+// MODAL MODIFIER LE NOM
+editNameBtn.addEventListener("click", () => {
+    newName.value = currentUser.fullName || "";
+    nameModal.classList.remove("hidden");
+    nameModal.classList.add("flex");
 
-const deleteBtn = document.getElementById("deleteAccountBtn");
+});
 
-deleteBtn.addEventListener("click", () => {
+cancelName.addEventListener("click", () => {
+    nameModal.classList.add("hidden");
+    nameModal.classList.remove("flex");
 
-    const confirmation = confirm(
-        "Voulez-vous vraiment supprimer votre compte ?"
-    );
-
-    if (!confirmation) {
-
+});
+// ENREGISTRER LE NOUVEAU NOM
+saveName.addEventListener("click", async () => {
+    const fullName = newName.value.trim();
+    if (!fullName) {
+        alert("Veuillez saisir un nom.");
         return;
 
     }
 
-    // Suppression locale
+    try {
+        const response = await fetch(`${API_URL}/users/me`, {
+            method: "PATCH",
 
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": API_KEY,
+                "Authorization": `Bearer ${TOKEN}`
+
+            },
+            body: JSON.stringify({
+                fullName: fullName
+            })
+
+        });
+        const result = await response.json();
+        if (!result.success) {
+            alert(result.message);
+            return;
+        }
+        currentUser.fullName = fullName;
+        afficherProfil();
+        nameModal.classList.add("hidden");
+        nameModal.classList.remove("flex");
+        alert("Nom modifié avec succès.");
+
+    }
+    catch (error) {
+        console.error(error);
+        alert("Erreur lors de la modification du nom.");
+    }
+
+});
+// CHANGER LA PHOTO DE PROFIL
+
+imageInput.addEventListener("change", async () => {
+
+    const file = imageInput.files[0];
+
+    if (!file) return;
+
+    // Prévisualisation immédiate
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+
+        profileImage.src = e.target.result;
+
+    };
+
+    reader.readAsDataURL(file);
+
+    // Demande l'URL de l'image
+    const avatarUrl = prompt(
+        "Collez l'URL publique de votre photo :",
+        currentUser.avatarUrl || ""
+    );
+
+    if (!avatarUrl) {
+        afficherProfil();
+        return;
+
+    }
+
+    try {
+        const response = await fetch(`${API_URL}/users/me`, {
+
+            method: "PATCH",
+
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": API_KEY,
+                "Authorization": `Bearer ${TOKEN}`
+
+            },
+            body: JSON.stringify({
+              avatarUrl: avatarUrl
+            })
+        });
+        const result = await response.json();
+        if (!result.success) {
+            alert(result.message);
+            afficherProfil();
+            return;
+        }
+        currentUser.avatarUrl = avatarUrl;
+        afficherProfil();
+        alert("Photo de profil mise à jour.");
+    }
+    catch (error) {
+        console.error(error);
+        alert("Erreur lors de la mise à jour de la photo.");
+        afficherProfil();
+    }
+
+});
+// ============================================
+// BIO
+const profileBio = document.getElementById("profileBio");
+const editBioBtn = document.getElementById("editBioBtn");
+editBioBtn.addEventListener("click", async () => {
+    const nouvelleBio = prompt(
+        "Modifier votre bio",
+        currentUser.bio || ""
+    );
+    if (nouvelleBio === null) return;
+    try{
+        const response = await fetch(`${API_URL}/users/me`,{
+            method:"PATCH",
+            headers:{
+                "Content-Type":"application/json",
+                "x-api-key":API_KEY,
+                "Authorization":`Bearer ${TOKEN}`
+            },
+            body:JSON.stringify({
+                bio:nouvelleBio
+         })
+
+        });
+       const result = await response.json();
+       console.log(result);
+        if(!result.success){
+            alert(result.message);
+            return;
+        }
+        currentUser.bio = nouvelleBio;
+        afficherProfil();
+        alert("Bio mise à jour.");
+    }
+    catch(error){
+        console.error(error);
+        alert("Erreur lors de la modification.");
+    }
+
+});
+// METTRE A JOUR LE PROFIL
+function actualiserProfil(){
+    profileName.textContent = currentUser.fullName;
+    accountName.textContent = currentUser.fullName;
+    profileEmail.textContent = currentUser.email;
+    accountEmail.textContent = currentUser.email;
+    profileImage.src =
+        currentUser.avatarUrl ||
+        "https://i.pravatar.cc/300";
+    if(profileBio){
+        profileBio.textContent =
+            currentUser.bio ||
+            "Aucune bio";
+
+    }
+
+}
+const deleteAccountBtn = document.getElementById("deleteAccountBtn");
+deleteAccountBtn.addEventListener("click", async () => {
+    const confirmation = confirm(
+        "Voulez-vous vraiment vous déconnecter de votre compte ?"
+    );
+
+    if (!confirmation) return;
+
+    try {
+        await fetch(`${API_URL}/auth/logout`, {
+            method: "POST",
+            headers: {
+                "x-api-key": API_KEY,
+
+                "Authorization": `Bearer ${TOKEN}`
+
+            }
+
+        });
+
+    } catch (error) {
+        console.error(error);
+    }
     localStorage.removeItem("token");
-    localStorage.removeItem("currentUser");
-    localStorage.removeItem("contacts");
-    localStorage.removeItem("messages");
-
-    alert("Votre compte a été supprimé avec succès.");
-
     window.location.href = "connexion.html";
 
 });
-// Déconnexion
-const profileImage = document.getElementById("profileImage");
-
-const imageInput = document.getElementById("imageInput");
-
-const profileName = document.getElementById("profileName");
-
-const editNameBtn = document.getElementById("editNameBtn");
-
-const nameModal = document.getElementById("nameModal");
-
-const newName = document.getElementById("newName");
-
-const saveName = document.getElementById("saveName");
-
-const cancelName = document.getElementById("cancelName");
-
-
-// Charger les données
-
-const savedImage = localStorage.getItem("profileImage");
-if(savedImage){
-    profileImage.src = savedImage;
-}
-
-const savedName = localStorage.getItem("profileName");
-if(savedName){
-    profileName.textContent = savedName;
-}
-
-// Modifier la photo
-
-imageInput.addEventListener("change"),(e)=>{
-    const file = e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-   reader.onload = () => {
-
-    profileImage.src = reader.result;
-
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-
-    user.photo = reader.result;
-
-    localStorage.setItem("currentUser", JSON.stringify(user));
-
-};
-
-    reader.readAsDataURL(file);
- }
-
-// Ouvrir la fenêtre
-
-editNameBtn.onclick=()=>{
-
-    newName.value=profileName.textContent;
-
-    nameModal.classList.remove("hidden");
-
-    nameModal.classList.add("flex");
-
-};
-// Annuler
-cancelName.onclick = () => {
-    nameModal.classList.remove("flex");
-    nameModal.classList.add("hidden");
-};
-
-// Sauvegarder
-
-saveName.onclick=()=>{
-
-  const user = JSON.parse(localStorage.getItem("currentUser"));
-user.fullName = newName.value;
-localStorage.setItem("currentUser", JSON.stringify(user));
-
-profileName.textContent = newName.value;
-    localStorage.setItem(
-
-        "profileName",
-
-        newName.value
-
-    );
-
-    nameModal.classList.add("hidden");
-
-};
